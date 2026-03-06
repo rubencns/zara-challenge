@@ -1,0 +1,35 @@
+.storageSelector {
+  display: flex;
+  align-items: center;
+}
+
+.storageOption {
+  height: 4.06rem;
+  width: 5.9rem;
+  border: 0.03125rem solid var(--gray-light-color);
+  border-right: none;
+  background: var(--white-color);
+  color: var(--black-light-color);
+  padding: 0.5rem;
+  cursor: pointer;
+
+  &.selected,
+  &:hover {
+    border: 0.03125rem solid var(--black-color);
+    border-right: 0.03125rem solid var(--black-color);
+
+    &:last-child {
+      border-right: 0.03125rem solid var(--black-color);
+    }
+  }
+
+  &:last-child {
+    border-right: 0.03125rem solid var(--gray-light-color);
+  }
+}
+
+@media (max-width: 800px) {
+  .storageOption {
+    height: 3rem;
+  }
+}

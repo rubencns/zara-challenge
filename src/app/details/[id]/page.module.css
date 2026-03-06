@@ -1,0 +1,6 @@
+.productDetailsMain {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10rem;
+  overflow-x: hidden;
+}

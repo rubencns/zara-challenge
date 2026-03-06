@@ -1,0 +1,13 @@
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(21.5rem, 1fr));
+  border-left: 0.0325rem solid var(--black-color);
+  padding-top: 0.0325rem;
+
+  & > * {
+    border-top: 0.0325rem solid var(--black-color);
+    border-right: 0.0325rem solid var(--black-color);
+    border-bottom: 0.0325rem solid var(--black-color);
+    margin-top: -0.0325rem;
+  }
+}

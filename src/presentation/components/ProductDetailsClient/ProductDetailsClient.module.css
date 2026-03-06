@@ -1,0 +1,114 @@
+.productDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 9.6rem;
+}
+
+.productDetailsHeader {
+  padding: 0.75rem var(--padding-page-horizontal);
+  margin-bottom: 6.875rem;
+
+  .headerBackLink {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+.productDetails {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 19.375rem;
+  padding-inline: var(--padding-page-horizontal);
+  max-width: 1200px;
+  width: 100%;
+
+  .productCardImageContainer {
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-block: 1rem;
+    max-height: 28rem;
+
+    .productCardImage {
+      display: flex;
+      object-fit: contain;
+      width: 100%;
+      /* la imagen del back es un webp con un fondo con mucho espacio,
+      por eso se hace un transform scale aunque sería una solución temporal */
+      transform: scale(1.35);
+    }
+  }
+
+  .productDetailsInfo {
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    .productDetailsInfoContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+
+  .productDetailsSelectorContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.productSpecifications {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: auto;
+  padding-inline: var(--padding-page-horizontal);
+  max-width: 1200px;
+  width: 100%;
+}
+
+.productSimilarItems {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-left: var(--padding-page-horizontal);
+  max-width: 1200px;
+  margin: auto;
+}
+
+@media (max-width: 1200px) {
+  .productDetails {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .productDetailsHeader {
+    margin-bottom: 3rem;
+  }
+
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .productCardImageContainer {
+    height: 17rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .productDetails {
+    .productDetailsInfo {
+      gap: 2.5rem;
+    }
+  }
+}

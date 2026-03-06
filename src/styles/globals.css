@@ -1,0 +1,116 @@
+:root {
+  --padding-page-horizontal: 6.25rem;
+
+  @media (max-width: 1200px) {
+    --padding-page-horizontal: 2.5rem;
+  }
+
+  @media (max-width: 393px) {
+    --padding-page-horizontal: 1rem;
+  }
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-light);
+
+  h1 {
+    font-size: var(--font-size-extra-large);
+    font-weight: var(--font-weight-light);
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-light);
+    text-transform: uppercase;
+  }
+
+  a {
+    color: var(--black-color);
+    text-decoration: none;
+  }
+
+  .text-extra-large {
+    font-size: var(--font-size-extra-large);
+  }
+
+  .text-large {
+    font-size: var(--font-size-large);
+  }
+
+  .text-medium {
+    font-size: var(--font-size-medium);
+  }
+
+  .text-small {
+    font-size: var(--font-size-small);
+  }
+
+  .text-extra-small {
+    font-size: var(--font-size-extra-small);
+  }
+
+  .text-extra-extra-small {
+    font-size: var(--font-size-extra-extra-small);
+  }
+
+  .label {
+    font-size: var(--font-size-extra-extra-small);
+    font-weight: var(--font-weight-light);
+    text-transform: uppercase;
+
+    &.light {
+      color: var(--gray-color);
+    }
+  }
+
+  .body-extra-small {
+    font-size: var(--font-size-extra-small);
+    text-transform: uppercase;
+  }
+
+  .body-small {
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+  }
+
+  .body-medium {
+    font-size: var(--font-size-medium);
+    text-transform: uppercase;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 800px) {
+    font-size: var(--font-size-extra-small);
+
+    h1 {
+      font-size: var(--font-size-large);
+    }
+
+    .text-large {
+      font-size: var(--font-size-small);
+    }
+
+    .body-medium {
+      font-size: var(--font-size-extra-small);
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-light-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--black-color);
+}

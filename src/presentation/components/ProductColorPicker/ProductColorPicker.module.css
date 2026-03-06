@@ -1,0 +1,29 @@
+.colorPickerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.colorPicker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .colorPickerOption {
+    height: 1.25rem;
+    width: 1.25rem;
+    border: 0.0625rem solid var(--gray-light-color);
+    background: none;
+    padding: 0.125rem;
+    cursor: pointer;
+
+    &.selected {
+      border: 0.0625rem solid var(--black-color);
+    }
+
+    .color {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

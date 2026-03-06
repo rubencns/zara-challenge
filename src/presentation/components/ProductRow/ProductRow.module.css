@@ -1,0 +1,20 @@
+.productRow {
+  display: flex;
+  padding-bottom: 2.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100vw;
+
+  & > * {
+    height: 21.5rem;
+    width: 21.5rem;
+    min-height: 21.5rem;
+    min-width: 21.5rem;
+    border: 0.0325rem solid var(--black-color);
+    border-right: none;
+
+    &:last-child {
+      border-right: 0.0325rem solid var(--black-color);
+    }
+  }
+}

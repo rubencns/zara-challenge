@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zara Challenge
 
-## Getting Started
+Mobile phone catalog with search, product details and a shopping cart.
 
-First, run the development server:
+Next.js 15, React 19, TypeScript, CSS Modules, SWR, Vitest + Testing Library.
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create `.env.local` file at the root:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+NEXT_PUBLIC_API_URL=https://prueba-tecnica-api-tienda-moviles.onrender.com
+NEXT_PUBLIC_API_KEY=87909682e6cd74208f41a6ef39fe4191
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`pnpm dev` / `pnpm build && pnpm start` / `pnpm test` / `pnpm lint` / `pnpm format`
 
-## Learn More
+## Architecture
 
-To learn more about Next.js, take a look at the following resources:
+Clean Architecture + Repository Pattern. This is overkill for a project this size, but I wanted to show how I'd structure things if the app needed to grow. With more domains (checkout, user, orders...) I'd move to a screaming architecture where folders map to business domains (`products/`, `cart/`, `checkout/`) instead of technical layers.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  domain/           # types, interfaces, business logic (calculateTotals)
+  application/      # use cases
+  infrastructure/   # implementations: httpClient, ApiProductRepository, LocalStorageCartRepository
+  presentation/     # components, hooks, context, DependencyProvider
+  app/              # Next.js pages
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each layer only depends on the ones below it. Dependencies are injected through `DependencyProvider` on the client and `serverUseCases.ts` on the server.
 
-## Deploy on Vercel
+## Technical Decisions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Listing and detail pages render server-side, search and cart are client-side.
+- The cart uses `useReducer` + `localStorage`, hydrating on mount through the `getCart` use case.
+- Search uses SWR with debounce, getting the initial data from the server as `fallbackData`.
+- `React.cache` deduplicates the product detail fetch between `generateMetadata` and the page component.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tests
+
+I focused on testing the parts with actual logic first (use cases, repositories, hooks, interactive components). Coverage could be improved by adding tests for the remaining presentational components and the context. `pnpm test:coverage` for the report.
